@@ -10,7 +10,10 @@ dotenv.config();
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON bodies
-app.use(cors());
+app.use(cors({
+  origin: 'https://harizon.vercel.app', // Allow your frontend origin
+  credentials: true // if you're using cookies or sessions
+}));
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGODB_URI)
